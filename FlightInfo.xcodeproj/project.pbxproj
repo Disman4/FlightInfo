@@ -13,6 +13,7 @@
 		3453EE4928D861C300CE38C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3453EE4728D861C300CE38C2 /* Main.storyboard */; };
 		3453EE4B28D861C400CE38C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3453EE4A28D861C400CE38C2 /* Assets.xcassets */; };
 		3453EE4E28D861C400CE38C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3453EE4C28D861C400CE38C2 /* LaunchScreen.storyboard */; };
+		3489731B28D8B94100054B18 /* FlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489731A28D8B94100054B18 /* FlightManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3453EE4A28D861C400CE38C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3453EE4D28D861C400CE38C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3453EE4F28D861C400CE38C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3489731A28D8B94100054B18 /* FlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				3453EE4128D861C300CE38C2 /* AppDelegate.swift */,
 				3453EE4328D861C300CE38C2 /* SceneDelegate.swift */,
 				3453EE4528D861C300CE38C2 /* ViewController.swift */,
+				3489731A28D8B94100054B18 /* FlightManager.swift */,
 				3453EE4728D861C300CE38C2 /* Main.storyboard */,
 				3453EE4A28D861C400CE38C2 /* Assets.xcassets */,
 				3453EE4C28D861C400CE38C2 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				3453EE4628D861C300CE38C2 /* ViewController.swift in Sources */,
 				3453EE4228D861C300CE38C2 /* AppDelegate.swift in Sources */,
 				3453EE4428D861C300CE38C2 /* SceneDelegate.swift in Sources */,
+				3489731B28D8B94100054B18 /* FlightManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

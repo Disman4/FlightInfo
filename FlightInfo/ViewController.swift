@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var flightNumber: UILabel!
     @IBOutlet weak var airlineName: UILabel!
@@ -18,14 +17,45 @@ class ViewController: UIViewController {
     @IBOutlet weak var departure: UILabel!
     @IBOutlet weak var arrival: UILabel!
     
+    var flightManager = FlightManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        searchTextfield.delegate = self
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        searchTextfield.endEditing(true)
         print(searchTextfield.text!)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextfield.endEditing(true)
+        print(searchTextfield.text!)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            textField.placeholder = "type something"
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //USE searchTextfield.text TO GET FlIGHT INFO
+        
+        if let flight = searchTextfield.text{
+            flightManager .fetchFlight(flightNumber: flight)
+            
+        }
+        searchTextfield.text = ""
+    }
+    
     
   
     
