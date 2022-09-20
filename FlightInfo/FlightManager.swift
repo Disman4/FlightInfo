@@ -26,23 +26,35 @@ struct FlightManager {
             let session = URLSession(configuration: .default)
             
             //3. Give URLSession a task
-            let task = session.dataTask(with: url, completionHandler: handle(data: response: error:))
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                if let safeData = data {
+                    
+                    self.parseJSON(flightData: safeData)
+                   
+                    // let dataString = String(data: safeData, encoding: .utf8)
+                    //print(dataString!)
+                }
+            }
             
             //4. Start the task
             task.resume()
             
         }
     }
-    
-    func handle(data: Data?, response: URLResponse?, error: Error?) -> Void{
-        if error != nil {
-            print(error!)
-            return
-        }
-        
-        if let safeData = data {
-            let dataString = String(data: safeData, encoding: .utf8)
-            print(dataString!)
+ 
+    func parseJSON(flightData: Data){
+        let decoder = JSONDecoder()
+        do{
+            let decodedData = try decoder.decode(FlightData.self, from: flightData)
+            print(decodedData.response.airline_name)
+            print(decodedData.response.flight_iata)
+        } catch{
+            print(error)
         }
     }
     
