@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelegate{
+  
+    
     
     @IBOutlet weak var flightNumber: UILabel!
     @IBOutlet weak var airlineName: UILabel!
@@ -23,6 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        flightManager.delegate = self
         searchTextfield.delegate = self
     }
     
@@ -54,6 +57,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         searchTextfield.text = ""
+    }
+    
+    func didUpdateFlight(flight: FlightModel) {
+        print(flight.airlineName)
     }
     
     

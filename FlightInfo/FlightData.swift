@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct FlightData: Decodable{
+struct FlightData: Codable{
     
     let response: Response
 }
 
-struct Response: Decodable{
+struct Response: Codable{
     let airline_name : String
     let flight_iata : String
 }

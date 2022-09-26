@@ -7,9 +7,15 @@
 
 import Foundation
 
+protocol FlightManagerDelegate{
+    func didUpdateFlight(flight: FlightModel)
+}
+
 struct FlightManager {
     
     let flightURL = "https://airlabs.co/api/v9/flight?api_key=5eb680f1-5edd-4228-ae86-6b7a521f3a45"
+    
+    var delegate: FlightManagerDelegate?
     
     func fetchFlight(flightNumber: String){
         let urlString = "\(flightURL)&flight_iata=\(flightNumber)"
@@ -33,11 +39,11 @@ struct FlightManager {
                 }
                 
                 if let safeData = data {
-                    
-                    self.parseJSON(flightData: safeData)
-                   
-                    // let dataString = String(data: safeData, encoding: .utf8)
-                    //print(dataString!)
+                     if let flight = self.parseJSON(flightData: safeData){
+                        self.delegate?.didUpdateFlight(flight: flight)
+                        // let dataString = String(data: safeData, encoding: .utf8)
+                        //print(dataString!)
+                    }
                 }
             }
             
@@ -47,14 +53,20 @@ struct FlightManager {
         }
     }
  
-    func parseJSON(flightData: Data){
+    func parseJSON(flightData: Data) -> FlightModel? {
         let decoder = JSONDecoder()
         do{
             let decodedData = try decoder.decode(FlightData.self, from: flightData)
-            print(decodedData.response.airline_name)
-            print(decodedData.response.flight_iata)
+            let airlineName = decodedData.response.airline_name
+            let airlineNumber = decodedData.response.flight_iata
+            
+            let flight = FlightModel(airlineName: airlineName, airlineNumber: airlineNumber)
+            //print(flight.airlineName)
+            return flight
+            
         } catch{
             print(error)
+            return nil
         }
     }
     
