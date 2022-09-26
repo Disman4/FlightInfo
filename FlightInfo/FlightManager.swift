@@ -42,8 +42,8 @@ struct FlightManager {
                 
                 if let safeData = data {
                     
-                     if let flight = self.parseJSON(safeData){
-                         self.delegate?.didUpdateFlight(self, flight: flight)
+                    if let flight = self.parseJSON(safeData){
+                        self.delegate?.didUpdateFlight(self, flight: flight)
                     }
                 }
             }
@@ -53,16 +53,27 @@ struct FlightManager {
             
         }
     }
- 
+    
     func parseJSON(_ flightData: Data) -> FlightModel? {
         let decoder = JSONDecoder()
         do{
             let decodedData = try decoder.decode(FlightData.self, from: flightData)
+            
             let airlineName = decodedData.response.airline_name
             let airlineNumber = decodedData.response.flight_iata
+            let departureCity = decodedData.response.dep_city
+            let arrivalCity = decodedData.response.arr_city
+            let departureAirport = decodedData.response.dep_iata
+            let arrivalAirport = decodedData.response.arr_iata
+            let departureTime = decodedData.response.dep_time
+            let arrivalTime = decodedData.response.arr_time
             
-            let flight = FlightModel(airlineName: airlineName, airlineNumber: airlineNumber)
-            //print(flight.airlineName)
+            let departureTerminal = decodedData.response.dep_terminal
+            let arrivalTerminal = decodedData.response.arr_terminal
+            let departureGate = decodedData.response.dep_gate
+            let arrivalGate = decodedData.response.arr_gate
+            
+            let flight = FlightModel(airlineName: airlineName, airlineNumber: airlineNumber, departureCity: departureCity, arrivalCity: arrivalCity, departureAirport: departureAirport, arrivalAirport: arrivalAirport, departureTime: departureTime, arrivalTime: arrivalTime, departureTerm: departureTerminal, arrivalTerm: arrivalTerminal, departureGate: departureGate, arrivalGate: arrivalGate)
             return flight
             
         } catch{

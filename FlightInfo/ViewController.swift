@@ -13,9 +13,15 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
     @IBOutlet weak var airlineName: UILabel!
     @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var from: UILabel!
+    @IBOutlet weak var departureAirport: UILabel!
     @IBOutlet weak var to: UILabel!
+    @IBOutlet weak var arrivalAirport: UILabel!
     @IBOutlet weak var departure: UILabel!
     @IBOutlet weak var arrival: UILabel!
+    @IBOutlet weak var depTerminal: UILabel!
+    @IBOutlet weak var arrTerminal: UILabel!
+    @IBOutlet weak var depGate: UILabel!
+    @IBOutlet weak var arrGate: UILabel!
     
     var flightManager = FlightManager()
     
@@ -61,6 +67,17 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
         DispatchQueue.main.async {
             self.airlineName.text = flight.airlineName
             self.flightNumber.text = flight.airlineNumber
+            self.from.text = flight.departureCity
+            self.departureAirport.text = flight.departureAirport
+            self.arrivalAirport.text = flight.arrivalAirport
+            self.to.text = flight.arrivalCity
+            self.departure.text = flight.departureTime
+            self.arrival.text = flight.arrivalTime
+            self.depTerminal.text = flight.departureTerm
+            self.arrTerminal.text = flight.arrivalTerm
+            self.depGate.text = flight.departureGate
+            self.arrGate.text = flight.arrivalGate
+            
         }
         
     }
@@ -69,10 +86,10 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
         print(error)
     }
     
-  
     
     
-
-
+    
+    
+    
 }
 
