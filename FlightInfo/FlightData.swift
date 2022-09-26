@@ -21,10 +21,10 @@ struct Response: Codable{
     let arr_iata : String
     let dep_time : String
     let arr_time : String
-    let dep_terminal : String
-    let arr_terminal : String
-    let dep_gate : String
-    let arr_gate : String
+    let dep_terminal : String?
+    let arr_terminal : String?
+    let dep_gate : String?
+    let arr_gate : String?
     
 }
 

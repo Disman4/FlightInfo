@@ -7,6 +7,7 @@
 
 import Foundation
 
+ //MARK  : - FlightManagerDelegate Protocol
 protocol FlightManagerDelegate{
     func didUpdateFlight(_ flightManger: FlightManager, flight: FlightModel)
     
@@ -24,7 +25,7 @@ struct FlightManager {
         performRequest(with: urlString)
     }
     
-    //MARK: - Networking
+     //MARK  : -  Networking
     func performRequest(with urlString: String){
         //1. Create a URL
         
@@ -54,6 +55,7 @@ struct FlightManager {
         }
     }
     
+     //MARK  : - JSON Parsing
     func parseJSON(_ flightData: Data) -> FlightModel? {
         let decoder = JSONDecoder()
         do{
@@ -73,7 +75,7 @@ struct FlightManager {
             let departureGate = decodedData.response.dep_gate
             let arrivalGate = decodedData.response.arr_gate
             
-            let flight = FlightModel(airlineName: airlineName, airlineNumber: airlineNumber, departureCity: departureCity, arrivalCity: arrivalCity, departureAirport: departureAirport, arrivalAirport: arrivalAirport, departureTime: departureTime, arrivalTime: arrivalTime, departureTerm: departureTerminal, arrivalTerm: arrivalTerminal, departureGate: departureGate, arrivalGate: arrivalGate)
+            let flight = FlightModel(airlineName: airlineName, airlineNumber: airlineNumber, departureCity: departureCity, arrivalCity: arrivalCity, departureAirport: departureAirport, arrivalAirport: arrivalAirport, departureTime: departureTime, arrivalTime: arrivalTime, departureTerm: departureTerminal!, arrivalTerm: arrivalTerminal!, departureGate: departureGate!, arrivalGate: arrivalGate!)
             return flight
             
         } catch{

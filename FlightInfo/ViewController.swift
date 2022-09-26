@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelegate{
+class ViewController: UIViewController{
     
     @IBOutlet weak var flightNumber: UILabel!
     @IBOutlet weak var airlineName: UILabel!
@@ -33,10 +33,16 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
         searchTextfield.delegate = self
     }
     
+    
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         searchTextfield.endEditing(true)
         print(searchTextfield.text!)
     }
+    
+}
+
+//MARK  : - UITextFieldDelegate
+extension ViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextfield.endEditing(true)
@@ -62,14 +68,17 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
         }
         searchTextfield.text = ""
     }
-    
+}
+
+//MARK  : - FlightManagerDelegate
+extension ViewController: FlightManagerDelegate{
     func didUpdateFlight(_ flightManger: FlightManager, flight: FlightModel) {
         DispatchQueue.main.async {
             self.airlineName.text = flight.airlineName
             self.flightNumber.text = flight.airlineNumber
             self.from.text = flight.departureCity
-            self.departureAirport.text = flight.departureAirport
-            self.arrivalAirport.text = flight.arrivalAirport
+            self.departureAirport.text = "(\(flight.departureAirport))"
+            self.arrivalAirport.text = "(\(flight.arrivalAirport))"
             self.to.text = flight.arrivalCity
             self.departure.text = flight.departureTime
             self.arrival.text = flight.arrivalTime
@@ -85,11 +94,5 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
     func didFailWithError(error: Error) {
         print(error)
     }
-    
-    
-    
-    
-    
-    
 }
 
