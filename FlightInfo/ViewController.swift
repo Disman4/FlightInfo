@@ -8,8 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelegate{
-  
-    
     
     @IBOutlet weak var flightNumber: UILabel!
     @IBOutlet weak var airlineName: UILabel!
@@ -59,10 +57,17 @@ class ViewController: UIViewController, UITextFieldDelegate, FlightManagerDelega
         searchTextfield.text = ""
     }
     
-    func didUpdateFlight(flight: FlightModel) {
-        print(flight.airlineName)
+    func didUpdateFlight(_ flightManger: FlightManager, flight: FlightModel) {
+        DispatchQueue.main.async {
+            self.airlineName.text = flight.airlineName
+            self.flightNumber.text = flight.airlineNumber
+        }
+        
     }
     
+    func didFailWithError(error: Error) {
+        print(error)
+    }
     
   
     
