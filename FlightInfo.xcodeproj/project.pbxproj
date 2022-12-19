@@ -64,16 +64,40 @@
 			children = (
 				3453EE4128D861C300CE38C2 /* AppDelegate.swift */,
 				3453EE4328D861C300CE38C2 /* SceneDelegate.swift */,
-				3453EE4528D861C300CE38C2 /* ViewController.swift */,
-				3489731A28D8B94100054B18 /* FlightManager.swift */,
-				3489731C28DA2C7300054B18 /* FlightData.swift */,
-				3489731E28DDBFB200054B18 /* FlightModel.swift */,
-				3453EE4728D861C300CE38C2 /* Main.storyboard */,
+				3489732228E2229200054B18 /* Controller */,
+				3489732128E2228700054B18 /* Model */,
+				3489732028E2226B00054B18 /* View */,
 				3453EE4A28D861C400CE38C2 /* Assets.xcassets */,
 				3453EE4C28D861C400CE38C2 /* LaunchScreen.storyboard */,
 				3453EE4F28D861C400CE38C2 /* Info.plist */,
 			);
 			path = FlightInfo;
+			sourceTree = "<group>";
+		};
+		3489732028E2226B00054B18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3453EE4728D861C300CE38C2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3489732128E2228700054B18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3489731A28D8B94100054B18 /* FlightManager.swift */,
+				3489731C28DA2C7300054B18 /* FlightData.swift */,
+				3489731E28DDBFB200054B18 /* FlightModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3489732228E2229200054B18 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3453EE4528D861C300CE38C2 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
