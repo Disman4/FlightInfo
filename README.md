@@ -4,7 +4,7 @@ An iOS App to fetch flight details from API, decode JSON data and display on sto
 
 ## Features
 * Storyboard
-* MVC Design Patter
+* MVC Design Pattern
 * Networking
 * JSON Decoding
 
